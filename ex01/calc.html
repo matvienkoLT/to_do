@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<head>
+	<title>Basic calculator</title>
+</head>
+
+<style type="text/css">
+	.bgd
+	{
+		background-color: #ffad33;
+	}
+
+	#top
+	{
+		position: absolute; 
+		left:50%; top:30%;
+		height: 30%;
+		margin-left:-12%;
+		display:block;
+		width: 30%;
+	
+	}
+	#header
+	{
+		text-transform: uppercase;
+		background-color: white;
+
+		text-align: center;
+		margin: 0 auto;
+	}
+	#elem
+	{
+		margin: 0 auto;
+		margin-top: 1%;
+		text-align: center;
+		width: 25%;
+		height: 10%;
+		border-radius: 5px;
+
+
+	}
+
+	.input
+	{
+		text-align: center;
+		height: 100%;
+		width: 90%;
+		font-size: 125%;
+		border: 1.5px solid blue;
+		font-style: italic;
+	}
+</style>
+<script>
+	window.setInterval(function usage(){alert("Please, use me...")}, 30000);
+
+	function calc() {
+		var x = document.getElementById("operator").value;
+		digit_1 = document.getElementById("digit_1").value;
+		digit_2 = document.getElementById("digit_2").value;
+		if (!digit_1 || !digit_2 || parseInt(digit_1) < 0 || parseInt(digit_2) < 0) {
+			alert("Error :(");
+			console.log("Error :(");
+		}
+		else if ((x == '/' || x == '%') && parseInt(digit_2) == 0) {
+			alert("It's over 9000!");
+			console.log("It's over 9000!");
+		}
+		else {
+			var res = eval(digit_1 + x + digit_2);
+			alert(res);
+			console.log(res);
+		}
+	}
+</script>
+
+<body class="bgd">
+
+<form>
+	<div id ="top">
+		<div id ="header">calculate it</div>
+		<div id ="elem"><input class="input" type="text" name="du" id = "digit_1" placeholder="operant I"></div>
+		<div style="margin-top:2%; text-align: center; vertical-align: 40%; height: 25%;">
+			<select style="font-size: 125%; position: relative; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); height: 50%; text-align: center;" id ="operator">
+				<option disabled>Choose an operation</option>
+					<option selected value="+">+</option>
+					<option value="-">-</option>
+					<option value="*">*</option>
+					<option value="/">/</option>
+					<option value="%">%</option>
+			</select>
+		</div>
+		<div id="elem" style="margin-top: 1%"><input class="input" type="text" name="du" id = "digit_2" placeholder="operant II"></div>
+		<div = id ="elem"><p><input type="button" value="Try me!" onclick="calc()"></p></div>
+	</div>
+</form>
+
+</body>
+</html>

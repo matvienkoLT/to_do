@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<head>
+	<title>Come blow this balloon</title>
+</head>
+<style type="text/css">
+	div.ballon
+	{
+		height: 200px;
+		width: 200px;
+		background-color: red;
+		border-radius: 100%;
+	}
+</style>
+
+<script type="text/javascript">
+
+	var ballon;
+	var color_id = 0;
+	var size = 200;
+	var color = {0: 'red', 1: 'green', 2: 'blue'};
+
+	window.onload = function() {
+		ballon = document.querySelector("div.ballon");
+		ballon.addEventListener("click", click_ballon);
+		ballon.addEventListener("mouseleave", mouse_ballon);
+	}
+
+	function click_ballon() {
+		size += 10;
+		if (size > 420)
+			size = 200;
+		color_id++;
+		if (color_id > 2)
+			color_id = 0;
+		reflesh_ballon(color_id);
+	}
+
+	function mouse_ballon() {
+		if (size > 200)
+			size -= 5;
+		color_id--;
+		if (color_id < 0)
+			color_id = 2;
+		reflesh_ballon(color_id);
+	}
+
+	function reflesh_ballon(color_id) {
+		ballon.style.height = size + 'px';
+		ballon.style.width = size + 'px';
+		ballon.style.backgroundColor = color[color_id];
+	}
+</script>
+<body>
+<div class = "ballon"></div>
+</body>
+</html>
